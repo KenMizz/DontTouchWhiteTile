@@ -1,0 +1,27 @@
+package kenmizz.commands.subcommand;
+
+import kenmizz.DontTouchWhiteTile;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import org.bukkit.command.CommandSender;
+import org.jetbrains.annotations.NotNull;
+
+public class HelpCommand implements SubCommand {
+
+    private final MiniMessage miniMessage = MiniMessage.miniMessage();
+
+    @Override
+    public String getName() {
+        return "help";
+    }
+
+    @Override
+    public boolean execute(DontTouchWhiteTile plugin, @NotNull CommandSender commandSender, @NotNull String @NotNull [] args) {
+        String[] helpMessage = {
+                "<white>=====别踩白块帮助=====</white>",
+                "/dttt <green>set</green> - 设置一个别踩白块区域",
+                "/dttt <green>del</green> <gold>[NAME]</gold> - 删除一个别踩白块区域"
+        };
+        commandSender.sendMessage(miniMessage.deserialize(String.join("\n", helpMessage)));
+        return true;
+    }
+}

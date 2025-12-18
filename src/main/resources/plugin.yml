@@ -1,0 +1,17 @@
+name: DontTouchWhiteTile
+version: '1.0-dev'
+main: kenmizz.DontTouchWhiteTile
+api-version: '1.21'
+authors: [ KenMizz ]
+description: Don't touch white tile
+
+commands:
+  dttt:
+    description: DonTouchWhiteTile related command
+    usage: "/dttt help"
+    permission: command.dttt.op
+
+permissions:
+  command.dttt.op:
+    description: Only op can use
+    default: op
