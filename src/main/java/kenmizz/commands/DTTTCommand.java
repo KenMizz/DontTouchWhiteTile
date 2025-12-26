@@ -7,12 +7,15 @@ import kenmizz.commands.subcommand.SubCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class DTTTCommand implements CommandExecutor {
+public class DTTTCommand implements CommandExecutor, TabCompleter {
 
     private DontTouchWhiteTile plugin;
 
@@ -32,5 +35,10 @@ public class DTTTCommand implements CommandExecutor {
 
         SubCommand subCommand = subCommandMap.get(subCommandName);
         return subCommand.execute(plugin, commandSender, strings);
+    }
+
+    @Override
+    public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
+        return List.of();
     }
 }
