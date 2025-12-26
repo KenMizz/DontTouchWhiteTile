@@ -9,9 +9,10 @@ commands:
   dttt:
     description: DonTouchWhiteTile related command
     usage: "/dttt help"
-    permission: command.dttt.op
+    permission: command.dttt.help
 
 permissions:
-  command.dttt.op:
-    description: Only op can use
+  command.dttt.set:
     default: op
+  command.dttt.help:
+    default: true
