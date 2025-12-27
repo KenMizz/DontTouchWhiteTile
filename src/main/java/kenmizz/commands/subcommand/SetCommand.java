@@ -1,12 +1,14 @@
 package kenmizz.commands.subcommand;
 
 import kenmizz.DontTouchWhiteTile;
-import kenmizz.commands.DTTTCommand;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 public class SetCommand implements SubCommand {
+
+    private MiniMessage miniMessage = MiniMessage.miniMessage();
 
     @Override
     public String getName() {
@@ -15,16 +17,14 @@ public class SetCommand implements SubCommand {
 
     @Override
     public boolean execute(DontTouchWhiteTile plugin, @NotNull CommandSender commandSender, @NotNull String @NotNull [] args) {
-        if ( !(commandSender instanceof Player)) {
-            commandSender.sendMessage("You need to a player to do this");
+        if ( !(commandSender instanceof Player) ) {
+            commandSender.sendMessage(miniMessage.deserialize("<red>你需要以玩家身份执行此操作!</red>"));
             return true;
         }
-        if ( !commandSender.hasPermission("command.dttt.set")) {
-            commandSender.sendMessage("Insufficient permission");
-            return false;
+        if ( !commandSender.hasPermission("command.dttt.set") ) {
+            commandSender.sendMessage("<red>权限不足</red>");
+            return true;
         }
-        plugin.playerDraftingList.add((Player) commandSender);
-        commandSender.sendMessage("Start setting point A");
         return true;
     }
 }
