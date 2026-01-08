@@ -17,14 +17,18 @@ public class SetCommand implements SubCommand {
 
     @Override
     public boolean execute(DontTouchWhiteTile plugin, @NotNull CommandSender commandSender, @NotNull String @NotNull [] args) {
-        if ( !(commandSender instanceof Player) ) {
-            commandSender.sendMessage(miniMessage.deserialize("<red>你需要以玩家身份执行此操作!</red>"));
-            return true;
-        }
         if ( !commandSender.hasPermission("command.dttt.set") ) {
             commandSender.sendMessage("<red>权限不足</red>");
             return true;
         }
+
+        if ( !(commandSender instanceof Player) ) {
+            commandSender.sendMessage(miniMessage.deserialize("<red>你需要以玩家身份执行此操作!</red>"));
+            return true;
+        }
+
+        commandSender.sendMessage(miniMessage.deserialize("你正在设置一块新的别踩白块儿区域，请先选择点A"));
+        plugin.getGameConfigManager().createConfigDraft((Player) commandSender);
         return true;
     }
 }
