@@ -4,7 +4,6 @@ import kenmizz.DontTouchWhiteTile;
 import kenmizz.commands.subcommand.HelpCommand;
 import kenmizz.commands.subcommand.SetCommand;
 import kenmizz.commands.subcommand.SubCommand;
-import kenmizz.commands.subcommand.TestCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -26,7 +25,6 @@ public class DTTTCommand implements CommandExecutor, TabCompleter {
         this.plugin = plugin;
         subCommandMap.put("set", new SetCommand());
         subCommandMap.put("help", new HelpCommand());
-        subCommandMap.put("test", new TestCommand());
     }
 
     @Override
@@ -41,6 +39,6 @@ public class DTTTCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
-        return List.of();
+        return subCommandMap.keySet().stream().toList();
     }
 }
