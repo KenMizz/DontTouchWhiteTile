@@ -4,55 +4,53 @@ import org.bukkit.Location;
 
 public class GameConfig {
 
-    private final String name;
-    private final Location pointA;
-    private final Location pointB;
-    private final Location startSign;
+    static class Holder {
 
-    public GameConfig(Builder builder) {
-        this.name = builder.name;
-        this.pointA = builder.pointA;
-        this.pointB = builder.pointB;
-        this.startSign = builder.startSign;
-    }
-
-    public Location getPointA() {
-        return this.pointA;
-    }
-
-    public Location getPointB() {
-        return this.pointB;
-    }
-
-    static class Builder {
-
-        private String name;
-        private Location pointA;
-        private Location pointB;
-        private Location startSign;
-
-        public Builder name(String name) {
-            this.name = name;
-            return this;
+        enum settingStage {
+            POINT_A,
+            POINT_B,
+            START_SIGN
         }
 
-        public Builder pointA(Location pointA) {
+        private Location pointA;
+        private Location pointB;
+        private String startSignUUID;
+
+        private settingStage currentSettingStage = settingStage.POINT_A;
+
+        public Holder pointA(Location pointA) {
             this.pointA = pointA;
             return this;
         }
 
-        public Builder pointB(Location pointB) {
+        public Holder pointB(Location pointB) {
             this.pointB = pointB;
             return this;
         }
 
-        public Builder startSign(Location startSign) {
-            this.startSign = startSign;
+        public Holder startSignUUID(String UUID) {
+            this.startSignUUID = startSignUUID;
             return this;
         }
 
-        public GameConfig build() {
-            return new GameConfig(this);
+        public Location getPointA() {
+            return pointA;
+        }
+
+        public Location getPointB() {
+            return pointB;
+        }
+
+        public String getStartSignUUID() {
+            return startSignUUID;
+        }
+
+        public settingStage getCurrentSettingStage() {
+            return currentSettingStage;
+        }
+
+        public void setCurrentSettingStage(settingStage currentSettingStage) {
+            this.currentSettingStage = currentSettingStage;
         }
     }
 }
