@@ -17,7 +17,7 @@ public class SetCommand implements SubCommand {
 
     @Override
     public boolean execute(DontTouchWhiteTile plugin, @NotNull CommandSender commandSender, @NotNull String @NotNull [] args) {
-        if ( !commandSender.hasPermission("command.dttt.set") ) {
+        if ( !commandSender.hasPermission("dttt.command.set") ) {
             commandSender.sendMessage("<red>权限不足</red>");
             return true;
         }

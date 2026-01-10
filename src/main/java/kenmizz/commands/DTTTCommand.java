@@ -17,9 +17,9 @@ import java.util.Map;
 
 public class DTTTCommand implements CommandExecutor, TabCompleter {
 
-    private DontTouchWhiteTile plugin;
+    private final DontTouchWhiteTile plugin;
 
-    private Map<String, SubCommand> subCommandMap = new HashMap<>();
+    private final Map<String, SubCommand> subCommandMap = new HashMap<>();
 
     public DTTTCommand(DontTouchWhiteTile plugin ) {
         this.plugin = plugin;

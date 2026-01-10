@@ -16,6 +16,7 @@ public class HelpCommand implements SubCommand {
 
     @Override
     public boolean execute(DontTouchWhiteTile plugin, @NotNull CommandSender commandSender, @NotNull String @NotNull [] args) {
+        if ( !commandSender.hasPermission("dttt.command.help") ) return true;
         String[] helpMessage = {
                 "<white>=====别踩白块帮助=====</white>",
                 "/dttt <green>set</green> - 设置一个别踩白块区域",
