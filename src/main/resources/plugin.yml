@@ -2,17 +2,18 @@ name: DontTouchWhiteTile
 version: '1.0-dev'
 main: kenmizz.DontTouchWhiteTile
 api-version: '1.21'
-authors: [ KenMizz ]
-description: Don't touch white tile
+author: KenMizz
+description: Don't touch white tile, a minigame plugin
 
 commands:
   dttt:
-    description: DonTouchWhiteTile related command
+    description: DonTouchWhiteTile command
     usage: "/dttt help"
-    permission: command.dttt.help
 
 permissions:
-  command.dttt.set:
+  dttt.command.set:
     default: op
-  command.dttt.help:
-    default: true
+    description: Permission to create a DTTT Area
+  dttt.command.help:
+    default: op
+    description: Permission to view DTTT's help message
