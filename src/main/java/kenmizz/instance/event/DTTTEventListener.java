@@ -51,8 +51,7 @@ public class DTTTEventListener implements Listener {
                     Location pointA = new Location(player.getWorld(), pointAx, pointAy, pointAz);
                     Location pointB = new Location(player.getWorld(), pointBx, pointBy, pointBz);
                     BlockFace blockFacing = BlockFace.valueOf(persistentDataContainer.get(facingKey, PersistentDataType.STRING));
-                    //TODO: The sign should store an value on whether a player is currently playing
-                    plugin.getDtttInstanceManager().createInstance(pointA, pointB, blockFacing, startGameSign, player).start();
+                    plugin.getDtttInstanceManager().createInstance(pointA, pointB, blockFacing, startGameSign, 4, 5, player).start();
                 }
             }
         }

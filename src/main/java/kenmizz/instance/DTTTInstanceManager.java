@@ -19,8 +19,8 @@ public class DTTTInstanceManager {
         this.plugin = plugin;
     }
 
-    public DTTTInstance createInstance(Location pointA, Location pointB, BlockFace facing, Sign startGameSign, Player player) {
-        DTTTInstance instance = new DTTTInstance(plugin, pointA, pointB, facing, startGameSign, player);
+    public DTTTInstance createInstance(Location pointA, Location pointB, BlockFace facing, Sign startGameSign, int width, int height, Player player) {
+        DTTTInstance instance = new DTTTInstance(plugin, pointA, pointB, facing, startGameSign, width, height, player);
         dtttInstanceMap.put(player, instance);
         return instance;
     }
