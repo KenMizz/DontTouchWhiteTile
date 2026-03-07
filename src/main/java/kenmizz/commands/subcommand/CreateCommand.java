@@ -2,22 +2,25 @@ package kenmizz.commands.subcommand;
 
 import kenmizz.DontTouchWhiteTile;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class SetCommand implements SubCommand {
+import java.util.List;
+
+public class CreateCommand implements SubCommand {
 
     private MiniMessage miniMessage = MiniMessage.miniMessage();
 
     @Override
     public String getName() {
-        return "set";
+        return "create";
     }
 
     @Override
     public boolean execute(DontTouchWhiteTile plugin, @NotNull CommandSender commandSender, @NotNull String @NotNull [] args) {
-        if ( !commandSender.hasPermission("dttt.command.set") ) {
+        if ( !commandSender.hasPermission("dttt.command.create") ) {
             commandSender.sendMessage("<red>权限不足</red>");
             return true;
         }
@@ -30,5 +33,10 @@ public class SetCommand implements SubCommand {
         commandSender.sendMessage(miniMessage.deserialize("你正在设置一块新的别踩白块儿区域，请先选择点A"));
         plugin.getGameConfigManager().createConfigDraft((Player) commandSender);
         return true;
+    }
+
+    @Override
+    public List<String> tabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
+        return List.of();
     }
 }

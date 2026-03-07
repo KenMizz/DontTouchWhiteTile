@@ -98,7 +98,6 @@ public class DTTTInstance {
 
     public boolean checkClickedBoundary(Location clickedBlock) {
         // Check if the clicked block is in row 0 of the block pattern
-        // Using direct coordinate comparison for better performance
         for (int col = 0; col < blockPattern.length; col++) {
             Location blockLoc = blockPattern[col][0];
             if (blockLoc.getBlockX() == clickedBlock.getBlockX() &&

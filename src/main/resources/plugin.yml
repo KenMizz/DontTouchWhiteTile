@@ -11,9 +11,12 @@ commands:
     usage: "/dttt help"
 
 permissions:
-  dttt.command.set:
+  dttt.command.create:
     default: op
     description: Permission to create a DTTT Area
+  dttt.command.remove:
+    default: op
+    description: Permission to remove a DTTT Area
   dttt.command.help:
     default: op
     description: Permission to view DTTT's help message
