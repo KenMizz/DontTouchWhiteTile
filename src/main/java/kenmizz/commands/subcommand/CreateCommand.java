@@ -30,7 +30,7 @@ public class CreateCommand implements SubCommand {
             return true;
         }
 
-        commandSender.sendMessage(miniMessage.deserialize("你正在设置一块新的别踩白块儿区域，请先选择点A"));
+        commandSender.sendMessage(miniMessage.deserialize("<yellow>正在设置一块新的别踩白块儿区域，请先选择<aqua>保护点A</aqua></yellow>"));
         plugin.getGameConfigManager().createConfigDraft((Player) commandSender);
         return true;
     }

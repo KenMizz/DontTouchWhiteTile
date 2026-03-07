@@ -7,16 +7,29 @@ public class GameConfig {
     static class Holder {
 
         enum settingStage {
+            AREA_A,
+            AREA_B,
             POINT_A,
             POINT_B,
             START_SIGN
         }
 
+        private Location areaA;
+        private Location areaB;
         private Location pointA;
         private Location pointB;
-        private String startSignUUID;
 
-        private settingStage currentSettingStage = settingStage.POINT_A;
+        private settingStage currentSettingStage = settingStage.AREA_A;
+
+        public Holder areaA(Location areaA) {
+            this.areaA = areaA;
+            return this;
+        }
+
+        public Holder areaB(Location areaB) {
+            this.areaB = areaB;
+            return this;
+        }
 
         public Holder pointA(Location pointA) {
             this.pointA = pointA;
@@ -28,21 +41,12 @@ public class GameConfig {
             return this;
         }
 
-        public Holder startSignUUID(String UUID) {
-            this.startSignUUID = startSignUUID;
-            return this;
-        }
-
         public Location getPointA() {
             return pointA;
         }
 
         public Location getPointB() {
             return pointB;
-        }
-
-        public String getStartSignUUID() {
-            return startSignUUID;
         }
 
         public settingStage getCurrentSettingStage() {
