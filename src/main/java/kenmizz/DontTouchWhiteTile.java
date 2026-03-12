@@ -13,6 +13,14 @@ public final class DontTouchWhiteTile extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        if ( !getDataFolder().exists() ) {
+            boolean result = getDataFolder().mkdir();
+            if ( !result ) {
+                getLogger().warning("Unable to create plugin folder, disabling plugin...");
+                getServer().getPluginManager().disablePlugin(this);
+                return;
+            }
+        }
         getCommand("dttt").setExecutor(new DTTTCommand(this));
         getCommand("dttt").setTabCompleter(new DTTTCommand(this));
         gameConfigManager = new GameConfigManager(this);
