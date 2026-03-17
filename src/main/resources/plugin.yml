@@ -1,5 +1,5 @@
 name: DontTouchWhiteTile
-version: '1.0-dev'
+version: '1.0'
 main: kenmizz.DontTouchWhiteTile
 api-version: '1.21'
 author: KenMizz
@@ -13,10 +13,16 @@ commands:
 permissions:
   dttt.command.create:
     default: op
-    description: Permission to create a DTTT Area
+    description: Permission to create a area
   dttt.command.remove:
     default: op
-    description: Permission to remove a DTTT Area
+    description: Permission to remove a area
   dttt.command.help:
     default: op
-    description: Permission to view DTTT's help message
+    description: Permission to view help message
+  dttt.area.break:
+    default: op
+    description: Permission to break block within an area
+  dttt.area.place:
+    default: op
+    description: Permission to place block within an area
