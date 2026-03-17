@@ -1,15 +1,14 @@
 package kenmizz;
 
+import kenmizz.area.AreaManager;
 import kenmizz.commands.DTTTCommand;
-import kenmizz.instance.event.DTTTEventListener;
 import kenmizz.gameconfig.GameConfigManager;
-import kenmizz.instance.DTTTInstanceManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class DontTouchWhiteTile extends JavaPlugin {
 
     private GameConfigManager gameConfigManager = null;
-    private DTTTInstanceManager dtttInstanceManager = null;
+    private AreaManager areaManager = null;
 
     @Override
     public void onEnable() {
@@ -24,11 +23,10 @@ public final class DontTouchWhiteTile extends JavaPlugin {
         getCommand("dttt").setExecutor(new DTTTCommand(this));
         getCommand("dttt").setTabCompleter(new DTTTCommand(this));
         gameConfigManager = new GameConfigManager(this);
-        dtttInstanceManager = new DTTTInstanceManager(this);
+        areaManager = new AreaManager(this);
         getLogger().info("小游戏 *别踩白块儿* 开启 !");
         getLogger().info("Faithful remake by KenMizz~");
         getLogger().info("当前版本: " + getPluginMeta().getVersion());
-        getServer().getPluginManager().registerEvents(new DTTTEventListener(this), this);
     }
 
     @Override
@@ -45,7 +43,7 @@ public final class DontTouchWhiteTile extends JavaPlugin {
         return gameConfigManager;
     }
 
-    public DTTTInstanceManager getDtttInstanceManager() {
-        return dtttInstanceManager;
+    public AreaManager getAreaManager() {
+        return areaManager;
     }
 }

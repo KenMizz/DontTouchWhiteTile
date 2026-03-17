@@ -1,6 +1,8 @@
 package kenmizz.gameconfig;
 
+import org.apache.maven.model.Build;
 import org.bukkit.Location;
+import org.bukkit.block.BlockFace;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
@@ -13,6 +15,7 @@ public class GameConfig {
     private final Location areaB;
     private final Location pointA;
     private final Location pointB;
+    private final BlockFace blockFacing;
 
     private final int timer;
 
@@ -22,6 +25,7 @@ public class GameConfig {
         pointA = builder.pointA;
         pointB = builder.pointB;
         timer = builder.timer;
+        blockFacing = builder.blockFacing;
     }
 
     public Location getAreaA() {
@@ -44,6 +48,10 @@ public class GameConfig {
         return timer;
     }
 
+    public BlockFace getBlockFacing() {
+        return blockFacing;
+    }
+
     public String toYaml() {
         Map<String, Object> configMap = new LinkedHashMap<>();
         Map<String, Object> coordinatesMap = new LinkedHashMap<>();
@@ -53,6 +61,7 @@ public class GameConfig {
         coordinatesMap.put("pointA", pointA.serialize());
         coordinatesMap.put("pointB", pointB.serialize());
         settingsMap.put("timer", timer); // seconds
+        settingsMap.put("blockFacing", blockFacing.toString());
         configMap.put("coordinates", coordinatesMap);
         configMap.put("settings", settingsMap);
         DumperOptions options = new DumperOptions();
@@ -61,9 +70,9 @@ public class GameConfig {
         return yaml.dump(configMap);
     }
 
-    static class Builder {
+    public static class Builder {
 
-        enum settingStage {
+        public enum settingStage {
             AREA_A,
             AREA_B,
             POINT_A,
@@ -76,7 +85,8 @@ public class GameConfig {
         private Location pointA;
         private Location pointB;
 
-        private final int timer = 30;
+        private int timer = 30;
+        private BlockFace blockFacing;
 
         private settingStage currentSettingStage = settingStage.AREA_A;
 
@@ -100,24 +110,18 @@ public class GameConfig {
             return this;
         }
 
-        public Location getAreaA() {
-            return areaA;
+        public Builder timer(int timer) {
+            this.timer = timer;
+            return this;
         }
 
-        public Location getAreaB() {
-            return areaB;
+        public Builder facing(BlockFace blockFacing) {
+            this.blockFacing = blockFacing;
+            return this;
         }
 
         public Location getPointA() {
             return pointA;
-        }
-
-        public Location getPointB() {
-            return pointB;
-        }
-
-        public int getTimer() {
-            return timer;
         }
 
         public settingStage getCurrentSettingStage() {
